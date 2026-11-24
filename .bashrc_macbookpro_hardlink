@@ -1,0 +1,45 @@
+# As a reminder: .bash_profile is for the entire login session
+# while .bashrc is for each shell session started afterwards.
+echo "Hello Kevin! Welcome to Bash (not using Z-Shell)"
+alias henlo='echo "Henlo there!"'
+alias ssh-aws='ssh -i ~/Desktop/LightsailDefaultKey-us-east-1.pem ubuntu@54.227.22.61'
+
+# PS1 is the prompt string that precedes a bash command
+# Color tag: \[\033[COLOR_CODE m\]
+# \u: username (i.e. kevinly)
+# \h: hostname
+# \w: partial working directory (starts from user home directory ~ if possible; else from root "/")
+PS1="\[\033[01;32m\]\u@work\[\033[00m\]:\[\033[01;31m\]\w\[\033[00m\]\$"
+
+# Ushnisha alias commands
+alias load-ushnisha='source /Users/kevinly/Scripts/load_ushnisha'
+alias save-ushnisha='source /Users/kevinly/Scripts/watchman-ushnisha'
+alias pdfbook='source /Users/kevinly/Scripts/pdfbook'
+alias kevinlyio-csv='source /Users/kevinly/Scripts/kevinlyio-activity-sync.sh'
+
+alias vba="source ./venv/bin/activate"
+alias howto="vim /Users/kevinly/Ushnisha/howto.md"
+alias scripts="hx ~/Scripts/bash_functions.sh"
+alias fswatch-ushnisha="source /Users/kevinly/Scripts/fswatch-ushnisha.sh"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+case ":$PATH:" in
+    *:/Users/kevinly/.juliaup/bin:*)
+        ;;
+
+    *)
+        export PATH=/Users/kevinly/.juliaup/bin${PATH:+:${PATH}}
+        ;;
+esac
+# Tab completion for juliaup and julia channel selection
+[ -f "/Users/kevinly/.julia/juliaup/completions/bash.sh" ] && source "/Users/kevinly/.julia/juliaup/completions/bash.sh"
+
+# <<< juliaup initialize <<<
+
+. "$HOME/.local/bin/env"
+
+
+source ~/Scripts/bash_functions.sh
